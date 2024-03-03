@@ -1,0 +1,27 @@
+/var/log/dpkg.log
+/etc/apt/sources.list
+/etc/apt/sources.list.d
+unattended-upgrades             # /etc/apt/apt.conf.d/50unattended-upgrades
+                                # To enable automatic updates, edit /etc/apt/apt.conf.d/20auto-upgrades
+                                # /var/log/unattended-upgrades
+
+sudo apt install                # Install a Package
+sudo apt remove                 # --purge option to apt remove will remove the package configuration files
+sudo apt update
+sudo apt upgrade
+sudo apt list --installed
+sudo apt list --upgradeable
+
+dpkg -i package_name.deb        # install/upgrade a package
+dpkg -l [search_pattern]        # package database, installed and uninstalled
+dpkg -r package_name.deb        # Remove Installed Packages
+dpkg -c package_name.deb        # List Content of a Package
+dpkg -s package_name.deb        # Check Whether a Package Is Installed or Not
+dpkg -L ufw                     # Check the Location of the Installed Package
+dpkg -p package_name.deb        # Display Detailed Information About a Package
+
+snap list
+snap info package_name
+snap find package_name
+snap install package_name
+snap remove package_name
