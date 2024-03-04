@@ -11,6 +11,7 @@ sudo apt update
 sudo apt upgrade
 sudo apt list --installed
 sudo apt list --upgradeable
+sudo apt install ./package_name.deb
 
 dpkg -i package_name.deb        # install/upgrade a package
 dpkg -l [search_pattern]        # package database, installed and uninstalled
