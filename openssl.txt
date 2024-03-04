@@ -1,0 +1,6 @@
+www.openssl.org/docs
+openssl req -noout -text -in example.com.csr                 #cat CSR
+openssl s_client -connect www.google.com:443 -showcerts      #showcerts
+
+openssl genrsa -out privatkey.pem -aes-256-cfb -rand /var/log/messages 4096
+openssl rsa -in privatkey.pem -pubout -out publickey.pem
