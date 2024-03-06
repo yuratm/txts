@@ -1,0 +1,27 @@
+========================================
+
+
+========================================
+sudo ufw enable                  #To turn UFW on with the default set of rules
+sudo ufw disable                 #To disable ufw use
+sudo ufw status verbose          #To check the status of UFW
+sudo ufw show raw                #
+
+/etc/ufw                         #rules files, end with .rules
+
+sudo ufw allow <port>/<optional: protocol>
+sudo ufw allow 53/tcp
+
+sudo ufw deny <port>/<optional: protocol>
+
+sudo ufw delete deny 80/tcp
+
+sudo ufw allow <service name>    #less /etc/services
+sudo ufw deny <service name>
+
+sudo ufw logging on
+sudo ufw logging off
+
+sudo ufw allow from <ip address>
+sudo ufw allow from 192.168.1.0/24
+========================================
