@@ -1,0 +1,15 @@
+sudo adduser username              #
+sudo deluser username              #To delete a user account and its primary group
+                                    #does not remove their respective home
+
+sudo passwd -l username            #To temporarily lock a user password
+sudo passwd -u username            #To temporarily unlock a user password
+
+sudo addgroup groupname            #To add or delete a personalized group
+sudo delgroup groupname            #
+
+sudo adduser username groupname    #To add a user to a group
+
+who | grep username                #check for any established SSH connections
+sudo pkill -f pts/#                #(^to get the pts/# terminal, kill)
+
