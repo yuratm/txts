@@ -18,4 +18,10 @@ who | grep username                #check for any established SSH connections
 sudo pkill -f pts/#                #(^to get the pts/# terminal, kill)
 
 ssh-keygen -t rsa -b 4096
+chown -R root.root /root
+chmod 0550 /root
+chmod go-w ~/
 chmod 600 .ssh/authorized_keys
+chmod 700 ~/.ssh
+.ssh/*.pub files should be 644/rw-r--r--
+cat id_rsa.pub >> authorized_keys
