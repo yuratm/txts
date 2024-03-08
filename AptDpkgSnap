@@ -19,6 +19,7 @@ dpkg -r package_name.deb        # Remove Installed Packages
 dpkg -c package_name.deb        # List Content of a Package
 dpkg -s package_name.deb        # Check Whether a Package Is Installed or Not
 dpkg -L ufw                     # Check the Location of the Installed Package
+dpkg -S /etc/host.conf          #file belongs to the base-files package
 dpkg -p package_name.deb        # Display Detailed Information About a Package
 
 snap list
