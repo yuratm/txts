@@ -23,6 +23,8 @@ dpkg -S /etc/host.conf          #file belongs to the base-files package
 dpkg -p package_name.deb        # Display Detailed Information About a Package
 
 snap list
+snap services
+snap restart
 snap info package_name
 snap find package_name
 snap install package_name
