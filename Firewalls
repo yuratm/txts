@@ -1,6 +1,43 @@
+help.ubuntu.com/community/IptablesHowTo
+www.frozentux.net/iptables-tutorial/iptables-tutorial.html
 ========================================
+iptables [-t table] command [match] [target/jump]
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -I INPUT 1 -i lo -j ACCEPT
+iptables-save > file
+iptables-save > /etc/iptables.rules
+iptables-persistent package
+========================================
+Matches
+-p, --protocol               #iptables -A INPUT -p tcp
+-s, --src, --source          #iptables -A INPUT -s 192.168.1.1
+-d, --dst, --destination     #iptables -A INPUT -d 192.168.1.1
+-i, --in-interface           #iptables -A INPUT -i eth0
+-o, --out-interface          #iptables -A FORWARD -o eth0
+-----------TCP matches
+--sport, --source-port       #iptables -A INPUT -p tcp --sport 22
+--dport, --destination-port  #iptables -A INPUT -p tcp --dport 22
+--tcp-flags                  #iptables -p tcp --tcp-flags SYN,FIN,ACK SYN
+--tcp-option                 #iptables -p tcp --tcp-option 16
+-----------UDP matches
+--sport, --source-port       #iptables -A INPUT -p udp --sport 53
+--dport, --destination-port  #iptables -A INPUT -p udp --dport 53
+-----------ICMP matches##iptables -p icmp --help
+--icmp-type                  #iptables -A INPUT -p icmp --icmp-type 8
+-----------Comment match
+--comment                    #iptables -A INPUT <todo> --comment "A comment" ##
+-----------Conntrack match
+--ctstate                    #iptables -A INPUT -p tcp -m conntrack --ctstate RELATED
+-----------
 
+-----------
+========================================
+iptables -P INPUT DROP       #-P, --policy
+-------------
 
+-------------
+*nat
+-A POSTROUTING -o eth0 -j SNAT --to-source 1.1.1.1
 ========================================
 dpkg -L ufw                      #files installed by a package
 sudo ufw enable                  #To turn UFW on with the default set of rules
