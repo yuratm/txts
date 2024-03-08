@@ -25,7 +25,8 @@ To create the CSR, run the following command at a terminal prompt:
 
 #openssl req -new -key server.key -out server.csr
 
-You can now submit this CSR file to a CA for processing. The CA will use this CSR file and issue the certificate. On the other hand, you can create self-signed certificate using this CSR.
+You can now submit this CSR file to a CA for processing. The CA will use this CSR file and issue the certificate.
+On the other hand, you can create self-signed certificate using this CSR.
 #===================================================
 Creating a Self-Signed Certificate
 #openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
@@ -68,13 +69,20 @@ sudo openssl ca -in server.csr -config /etc/ssl/openssl.cnf
 
 After entering the password for the CA key, you will be prompted to sign the certificate, and again to commit the new certificate.
 
-There should now be a new file, /etc/ssl/newcerts/01.pem, containing the same output. Copy and paste everything beginning with the line: -----BEGIN CERTIFICATE----- and continuing through the line: ----END CERTIFICATE----- lines to a file named after the hostname of the server where the certificate will be installed. For example mail.example.com.crt, is a nice descriptive name.
+There should now be a new file, /etc/ssl/newcerts/01.pem, containing the same output. 
+Copy and paste everything beginning with the line: -----BEGIN CERTIFICATE----- and 
+continuing through the line: ----END CERTIFICATE----- lines
+to a file named after the hostname of the server where the certificate will be installed.
+For example mail.example.com.crt, is a nice descriptive name.
 
 Subsequent certificates will be named 02.pem, 03.pem, etc.
 
-Finally, copy the new certificate to the host that needs it, and configure the appropriate applications to use it. The default location to install certificates is /etc/ssl/certs. This enables multiple services to use the same certificate without overly complicated file permissions.
+Finally, copy the new certificate to the host that needs it, and configure the appropriate applications to use it.
+The default location to install certificates is /etc/ssl/certs. 
+This enables multiple services to use the same certificate without overly complicated file permissions.
 
-For applications that can be configured to use a CA certificate, you should also copy the /etc/ssl/certs/cacert.pem file to the /etc/ssl/certs/ directory on each server.
+For applications that can be configured to use a CA certificate,
+you should also copy the /etc/ssl/certs/cacert.pem file to the /etc/ssl/certs/ directory on each server.
 #===================================================
 
 
