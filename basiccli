@@ -1,3 +1,7 @@
+Ctrl+Alt+Delete key combination to reboot the server without having to log on.
+sudo systemctl mask ctrl-alt-del.target
+sudo systemctl daemon-reload
+
 sudo adduser username              #
 sudo deluser username              #To delete a user account and its primary group
                                     #does not remove their respective home
