@@ -3,8 +3,31 @@ ssh-keygen -D /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so > smartcard.pub    #Ext
 ~/.ssh/config
     PKCS11Provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 
+ssh-agent
+    -t life
+eval "$(ssh-agent -s)"
+eval "$(ssh-agent)"
+SSH_AGENT_PID
+SSH_AUTH_SOCK
+SSH_AGENT_SOCK
 
-
+ssh-add ~/.ssh/id_dsa or id_rsa        #non smartcard, from file
+The authentication agent must be running and the SSH_AUTH_SOCK
+       environment variable must contain the name of its socket for to
+       work.
+-t life    #maximum lifetime in seconds or in a
+               time format specified in sshd_config(5)
+-v          #Verbose mode.
+------------
+ssh-keygen -t rsa -b 4096
+chown -R root.root /root
+chmod 0550 /root
+chmod go-w ~/
+chmod 600 .ssh/authorized_keys
+chmod 700 ~/.ssh
+.ssh/*.pub files should be 644/rw-r--r--
+cat id_rsa.pub >> authorized_keys
+------------
 
 
 
