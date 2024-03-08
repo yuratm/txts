@@ -7,6 +7,9 @@ sudo iptables -I INPUT 1 -i lo -j ACCEPT
 iptables-save > file
 iptables-save > /etc/iptables.rules
 iptables-persistent package
+
+iptables -L -t nat
+iptables -L -n -v 
 ========================================
 Matches
 -p, --protocol               #iptables -A INPUT -p tcp
