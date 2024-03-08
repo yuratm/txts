@@ -5,6 +5,7 @@
 dpkg -L ufw                      #files installed by a package
 sudo ufw enable                  #To turn UFW on with the default set of rules
 sudo ufw disable                 #To disable ufw use
+sudo ufw disable && sudo ufw enable
 sudo ufw status verbose          #To check the status of UFW
 sudo ufw show raw                #
 
@@ -25,4 +26,6 @@ sudo ufw logging off
 
 sudo ufw allow from <ip address>
 sudo ufw allow from 192.168.1.0/24
+
+ sudo ufw --dry-run allow http        #output the resulting rules, but not apply them
 ========================================
