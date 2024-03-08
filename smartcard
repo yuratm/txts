@@ -1,0 +1,13 @@
+ssh-keygen -D /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so > smartcard.pub    #Extract the user’s public key from the smart card
+
+~/.ssh/config
+    PKCS11Provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+
+
+
+
+
+
+
+
+
