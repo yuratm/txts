@@ -1,6 +1,82 @@
+#===================================================
+PEM-formatted = ----BEGIN CERTIFICATE----
+DER-form to PEM-form
+openssl x509 -inform der -outform pem -in local-ca.der -out local-ca.crt
+#===================================================
 www.openssl.org/docs
-openssl req -noout -text -in example.com.csr                 #cat CSR
-openssl s_client -connect www.google.com:443 -showcerts      #showcerts
+#openssl req -noout -text -in example.com.csr                 #cat CSR
+#openssl s_client -connect www.google.com:443 -showcerts      #showcerts
 
-openssl genrsa -out privatkey.pem -aes-256-cfb -rand /var/log/messages 4096
-openssl rsa -in privatkey.pem -pubout -out publickey.pem
+#openssl genrsa -out privatkey.pem -aes-256-cfb -rand /var/log/messages 4096
+#openssl rsa -in privatkey.pem -pubout -out publickey.pem
+#===================================================
+#ubuntu.com/server/docs/security-certificates
+Generating a Certificate Signing Request (CSR)
+1) generate a key
+  If the certificate will be used by service daemons, such as Apache, a key without a passphrase is often appropriate.
+
+#openssl genrsa -des3 -out server.key 2048
+#openssl rsa -in server.key -out server.key.insecure
+#mv server.key server.key.secure
+#mv server.key.insecure server.key
+
+The insecure key is now named server.key, and you can use this file to generate the CSR without passphrase.
+To create the CSR, run the following command at a terminal prompt:
+
+#openssl req -new -key server.key -out server.csr
+
+You can now submit this CSR file to a CA for processing. The CA will use this CSR file and issue the certificate. On the other hand, you can create self-signed certificate using this CSR.
+#===================================================
+Creating a Self-Signed Certificate
+#openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+#===================================================
+Installing the Certificate
+#sudo cp server.crt /etc/ssl/certs
+#sudo cp server.key /etc/ssl/private
+#===================================================
+server.key.secure    #with passphrase
+server.key           #without passphrase(need pass in setup steps)(private)
+server.csr           #submit this CSR file to a CA for processing/ or create self-signed
+server.crt           #your certificate(publickey)
+#===================================================
+Now simply configure any applications, with the ability to use public-key cryptography, to use the certificate and key files.
+#===================================================
+Certification Authority
+
+sudo mkdir /etc/ssl/CA
+sudo mkdir /etc/ssl/newcerts
+sudo sh -c "echo '01' > /etc/ssl/CA/serial"
+sudo touch /etc/ssl/CA/index.txt
+
+Edit /etc/ssl/openssl.cnf, and in the [ CA_default ] change:
+dir             = /etc/ssl              # Where everything is kept
+database        = $dir/CA/index.txt     # database index file.
+certificate     = $dir/certs/cacert.pem # The CA certificate
+serial          = $dir/CA/serial        # The current serial number
+private_key     = $dir/private/cakey.pem# The private key
+
+Next, create the self-signed root certificate:
+openssl req -new -x509 -extensions v3_ca -keyout cakey.pem -out cacert.pem -days 3650
+
+Now install the root certificate and key:
+sudo mv cakey.pem /etc/ssl/private/
+sudo mv cacert.pem /etc/ssl/certs/
+
+You are now ready to start signing certificates. The first item needed is a Certificate Signing Request (CSR)
+Once you have a CSR, enter the following to generate a certificate signed by the CA:
+sudo openssl ca -in server.csr -config /etc/ssl/openssl.cnf
+
+After entering the password for the CA key, you will be prompted to sign the certificate, and again to commit the new certificate.
+
+There should now be a new file, /etc/ssl/newcerts/01.pem, containing the same output. Copy and paste everything beginning with the line: -----BEGIN CERTIFICATE----- and continuing through the line: ----END CERTIFICATE----- lines to a file named after the hostname of the server where the certificate will be installed. For example mail.example.com.crt, is a nice descriptive name.
+
+Subsequent certificates will be named 02.pem, 03.pem, etc.
+
+Finally, copy the new certificate to the host that needs it, and configure the appropriate applications to use it. The default location to install certificates is /etc/ssl/certs. This enables multiple services to use the same certificate without overly complicated file permissions.
+
+For applications that can be configured to use a CA certificate, you should also copy the /etc/ssl/certs/cacert.pem file to the /etc/ssl/certs/ directory on each server.
+#===================================================
+
+
+
+
