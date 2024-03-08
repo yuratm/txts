@@ -1,0 +1,19 @@
+snap install lxd
+lxd init
+adduser joe lxd
+lxc launch remote:image containername
+lxc image list ubuntu:
+lxc image info ubuntu:bionic
+lxc image info ubuntu:lts/arm64
+lxc launch ubuntu:bionic b1
+lxc list
+lxc info b1
+lxc exec b1 -- bash
+lxc shell b1
+lxc help config
+
+journalctl -u lxd
+lxc info c1 --show-log
+/var/log/lxd/c1/lxc.conf
+
+documentation.ubuntu.com/lxd/en/latest/reference/instance_options/
