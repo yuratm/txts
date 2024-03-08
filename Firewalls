@@ -2,6 +2,7 @@
 
 
 ========================================
+dpkg -L ufw                      #files installed by a package
 sudo ufw enable                  #To turn UFW on with the default set of rules
 sudo ufw disable                 #To disable ufw use
 sudo ufw status verbose          #To check the status of UFW
