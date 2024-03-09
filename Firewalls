@@ -79,4 +79,12 @@ sudo ufw allow from 192.168.1.0/24
 sudo ufw --dry-run allow http        #output the resulting rules, but not apply them
 
 sudo ufw app list
+---
+docs.ansible.com/ansible/latest/collections/community/general/ufw_module.html
+ufw
+requirements  - ufw package
+ansible-galaxy collection list
+ansible-galaxy collection install community.general
+To use it in a playbook, specify: community.general.ufw
 ========================================
+
