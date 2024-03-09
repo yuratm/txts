@@ -50,6 +50,9 @@ sudo ufw status verbose          #To check the status of UFW
 sudo ufw show raw                #
 
 /etc/ufw                         #rules files, end with .rules
+/lib/ufw/user.rules              #old?
+/etc/ufw/user.rules
+locate user.rules
 
 sudo ufw allow <port>/<optional: protocol>
 sudo ufw allow 53/tcp
@@ -59,7 +62,13 @@ sudo ufw deny <port>/<optional: protocol>
 sudo ufw delete deny 80/tcp
 
 sudo ufw allow <service name>    #less /etc/services
+sudo ufw allow from 203.0.113.101
 sudo ufw deny <service name>
+sudo ufw deny from 203.0.113.100
+sudo ufw delete allow from 203.0.113.101
+
+sudo ufw status numbered
+sudo ufw delete 1
 
 sudo ufw logging on
 sudo ufw logging off
@@ -67,5 +76,7 @@ sudo ufw logging off
 sudo ufw allow from <ip address>
 sudo ufw allow from 192.168.1.0/24
 
- sudo ufw --dry-run allow http        #output the resulting rules, but not apply them
+sudo ufw --dry-run allow http        #output the resulting rules, but not apply them
+
+sudo ufw app list
 ========================================
