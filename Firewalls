@@ -60,6 +60,8 @@ sudo ufw allow 53/tcp
 sudo ufw deny <port>/<optional: protocol>
 
 sudo ufw delete deny 80/tcp
+ufw deny out from any to 8.8.8.8
+ufw delete deny out from any to 8.8.8.8
 
 sudo ufw allow <service name>    #less /etc/services
 sudo ufw allow from 203.0.113.101
