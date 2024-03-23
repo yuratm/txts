@@ -1,0 +1,30 @@
+==============================
+https://blog.sedicomm.com/2018/10/03/upravlenie-soobshheniyami-zhurnalov-v-systemd-s-ispolzovaniem-journalctl-prikladnoe-rukovodstvo/
+https://losst.pro/shpargalka-po-journalctl-v-linux
+
+/etc/systemd/journald.conf	#файл настроек
+man journald.conf
+journalctl --list-boots
+journalctl -b			#текущей загрузки ОС
+journalctl -b -1		#из предыдущей загрузки
+journalctl --since "2024-01-01 00:00:01"
+journalctl --since "2020-12-17" --until "2020-12-18 10:00:00
+journalctl -k			#только сообщения ядра Linux
+journalctl -u apache2.service	#определенной службы
+journalctl _PID=1
+journalctl -p err
+journalctl -p 1..4		#emerg (0), err (3), warning (4), debug (7)
+journalctl --disk-usage
+
+journalctl -o verbose
+
+/var/log/journal/
+
+# systemctl list-units --type=service
+
+Удалить журналы, оставив только последние 100 Мб:
+# journalctl --vacuum-size=100M
+
+Удалить журналы, оставив журналы только за последние 7 дней:
+# journalctl --vacuum-time=7d
+==============================
