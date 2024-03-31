@@ -90,9 +90,11 @@ ansible-galaxy collection install community.general
 To use it in a playbook, specify: community.general.ufw
 ========================================
 ========================================
+/etc/ferm/rules.d/
 ========================================
 https://docs.debops.org/en/latest/ansible/roles/ferm/rules.html
-Default rules
+https://docs.debops.org/en/latest/ansible/roles/ferm/defaults/main.html
+Default rules (ferm__default_rules)
   defaults/main.yml
 
 Custom rules
@@ -110,6 +112,21 @@ by_role
     Optional. Name of the Ansible role in the format ROLE_OWNER.ROLE_NAME which is responsible for the rule. This will be included as a comment in the generated rule file.
 ------------------
  iptables INPUT chain called debops-legacy-input-rules - ferm__include_legacy to False
+------------------
+ferm__mark_portscan: True
+ferm__iptables_backend_type
+ferm__ansible_controllers: [ '192.168.121.1' ]
+ferm__ansible_controllers_ports: [ 'ssh' ]
+ferm__default_policy_input: 'DROP'
+ferm__default_policy_output: 'ACCEPT'
+ferm__default_policy_forward: 'DROP'
+ferm__filter_recent: True
+ferm__filter_recent_name: 'badguys'
+ferm__filter_recent_time: '{{ (60 * 60 * 2) }}'
+ferm__fail2ban: True ???
+
+
+
 
 
 
