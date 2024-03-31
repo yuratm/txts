@@ -89,4 +89,27 @@ ansible-galaxy collection list
 ansible-galaxy collection install community.general
 To use it in a playbook, specify: community.general.ufw
 ========================================
+========================================
+========================================
+https://docs.debops.org/en/latest/ansible/roles/ferm/rules.html
+Default rules
+  defaults/main.yml
+
+Custom rules
+  (ferm__rules, ferm__group_rules, ferm__host_rules or ferm__dependent_rules)
+
+Each rule has to be defined as a YAML dict using some of the following keys:
+
+domain
+    Optional. iptables domain used for the firewall rule. Possible values: ip, ip6. Defaults to ferm__domains.
+table
+    Optional. iptables table to which the rule is added or from which it is removed. Defaults to filter.
+chain
+    Optional. iptables chain to which the rule is added or from which it is removed. Defaults to INPUT.
+by_role
+    Optional. Name of the Ansible role in the format ROLE_OWNER.ROLE_NAME which is responsible for the rule. This will be included as a comment in the generated rule file.
+------------------
+ iptables INPUT chain called debops-legacy-input-rules - ferm__include_legacy to False
+
+
 
