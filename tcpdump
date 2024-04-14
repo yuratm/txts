@@ -1,0 +1,16 @@
+tcpdump --list-interfaces
+
+sudo tcpdump –i eth0 –w dump1.pcap
+sudo tcpdump –i eth0 host 192.168.0.161
+sudo tcpdump –i eth0 src 192.168.0.161
+sudo tcpdump –i eth0 dst 192.168.0.161
+src net 192.168.0.0/16 and dst net 10.0.0.0/8 or 172.16.0.0/16
+sudo tcpdump –i eth0 port 443
+sudo tcpdump –i eth0 portrange 21-23
+sudo tcpdump –i eth0 udp
+sudo tcpdump –i eth0 icmp
+sudo tcpdump –i eth0 tcp[13]==2	                  #SYN
+'tcp[tcpflags] & (tcp-название_флага) != 0'	      #ACK, URG, PSH, RST, FIN
+'tcp[tcpflags] & (tcp-syn) != 0'
+tcpdump 'tcp[(tcp[12] >>2):4] = 0x5353482D'	      #SSH пакет
+sudo tcpdump 'tcp[(tcp[12] >>2):4] = 0x47455420'	#GET запрос
