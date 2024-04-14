@@ -17,3 +17,115 @@ lxc info c1 --show-log
 /var/log/lxd/c1/lxc.conf
 
 documentation.ubuntu.com/lxd/en/latest/reference/instance_options/
+
+lxc config show
+lxc config edit
+lxc network set lxdbr0 ipv6.address none
+
+lxc image list
+lxc image list ubuntu:
+lxc image list ubuntu: 22.04 architecture=$(uname -m)
+
+lxc info <name>
+lxc config show <name>
+
+lxc launch ubuntu:22.04 second
+lxc stop second
+lxc delete second
+
+lxc launch ubuntu:22.04 limited --config limits.cpu=1 --config limits.memory=192MiB
+lxc config show limited
+lxc config show <instance_name> --expanded
+lxc config set limited limits.memory=128MiB
+lxc config edit <instance_name>
+lxc restart <name>
+lxc info <instance_name>
+lxc info <instance_name> --show-log
+lxc console <instance_name> --show-log
+
+https://documentation.ubuntu.com/lxd/en/latest/howto/instances_routed_nic_vm/
+
+To see all configured remote servers, enter the following command:
+lxc remote list
+lxc image list <remote>:
+lxc remote get-default
+lxc image list [<remote>:]
+https://documentation.ubuntu.com/lxd/en/latest/howto/images_manage/
+
+lxc project list
+lxc list --project my-project
+
+lxc storage list
+lxc storage show <pool_name>
+lxc storage info <pool_name>
+
+Enter the following command to display a list of all available profiles:
+lxc profile list
+Enter the following command to display the contents of a profile:
+lxc profile show <profile_name>
+lxc profile edit <profile_name>
+lxc profile edit <profile_name> < profile.yaml
+
+https://documentation.ubuntu.com/lxd/en/latest/howto/network_create/
+lxc network list-allocations
+
+
+Check the amount of free and used memory on the parent system and on the two containers:
+free -m
+lxc exec first -- free -m
+lxc exec limited -- free -m
+
+Check the number of CPUs available on the parent system and on the two containers:
+nproc
+lxc exec first -- nproc
+lxc exec limited -- nproc
+
+lxc file pull first/etc/hosts .
+lxc file push hosts first/etc/hosts
+lxc file pull first/var/log/syslog - | less
+
+Create a snapshot called “clean”:
+lxc snapshot first clean
+Restore the container to the state of the snapshot:
+lxc restore first clean
+Delete the snapshot:
+lxc delete first/clean
+
+snap info lxd
+sudo snap install lxd --channel=latest/stable
+
+sudo snap refresh --unhold lxd
+sudo snap refresh lxd --cohort="+"
+sudo snap refresh --hold lxd
+https://snapcraft.io/docs/managing-updates#heading--hold
+snap refresh --time
+snap refresh --list
+snap refresh
+Use the snap changes and snap tasks <change-id> commands to see details about what changed during the last refresh:
+
+https://documentation.ubuntu.com/lxd/en/latest/howto/snap/
+To see all configuration options that are set on the snap, use the following command:
+sudo snap get lxd
+
+To start and stop the LXD daemon, you can use the start and stop commands of the snap:
+sudo snap stop lxd
+sudo snap start lxd
+These commands are equivalent to running the corresponding systemctl commands:
+sudo systemctl stop snap.lxd.daemon.service snap.lxd.daemon.unix.socket
+sudo systemctl start snap.lxd.daemon.unix.socket; lxc list
+Stopping the daemon also stops all running instances.
+To restart the LXD daemon, use the following command:
+sudo systemctl restart snap.lxd.daemon
+Restarting the daemon stops all running instances. If you want to keep the instances running, reload the daemon instead:
+sudo systemctl reload snap.lxd.daemon
+To restart the daemon, you can also use the snap commands. To stop all running instances and restart:
+sudo snap restart lxd
+To keep the instances running and reload:
+sudo snap restart --reload lxd
+
+lxc config show <instance_name> --expanded
+
+
+
+
+
