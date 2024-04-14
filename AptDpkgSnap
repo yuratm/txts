@@ -29,3 +29,27 @@ snap info package_name
 snap find package_name
 snap install package_name
 snap remove package_name
+
+snap info lxd
+snap install lxd --channel=latest/stable
+
+snap refresh --unhold lxd
+snap refresh lxd --cohort="+"
+snap refresh --hold lxd
+
+https://snapcraft.io/docs/managing-updates#heading--hold
+snap refresh --time
+snap refresh --list
+snap refresh
+Use the 
+snap changes
+and 
+snap tasks <change-id>
+commands to see details about what changed during the last refresh:
+
+https://documentation.ubuntu.com/lxd/en/latest/howto/snap/
+To see all configuration options that are set on the snap, use the following command:
+sudo snap get lxd
+
+To keep the instances running and reload:
+sudo snap restart --reload lxd
