@@ -27,3 +27,81 @@ chmod 700 ~/.ssh
 cat id_rsa.pub >> authorized_keys
 
 lshw -class network
+
+www.howtogeek.com/181/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/
+
+Ctrl + C		#This will stop (terminate) a running program immediately
+
+Ctrl + Z		#suspend a running program STOP signal and sends it to the background
+	running the command in the background by adding & to it.
+	sleep 4949 &	#running(not stoppped)
+	#Resuming the process again
+	kill -CONT <PID>
+	jobs		#See all processes running in the background
+	fg <n>
+	
+Ctrl + D		#sends an EOF (End-of-file) marker to bash
+Ctrl + L		#clear terminal screen
+Ctrl + A		#cursor to the beginning of the line
+Ctrl + E		#cursor to the end of the line
+Ctrl + U		#erases from cursor to the beginning of the line
+Ctrl + K		#erases from cursor to the end of the line
+Ctrl + W		#delete a single word(<-)
+Ctrl + Y		#paste the erased text that with Ctrl + W, Ctrl + U and Ctrl + K
+Ctrl + P		#view the previous command(PgUp)
+Ctrl + N		#displays the next command(PgDn)
+Ctrl + R		#search in your command history -> Just press Ctrl+R and start typing
+
+Ctrl+S: Stop all output to the screen(don't want to stop the command itself)
+Ctrl+Q: Resume output to the screen after stopping it with Ctrl+S. 
+Ctrl+A or Home: Go to the beginning of the line.
+Ctrl+E or End: Go to the end of the line.
+Alt+B: Go left (back) one word.
+Ctrl+B: Go left (back) one character.
+Alt+F: Go right (forward) one word.
+Ctrl+F: Go right (forward) one character. 
+
+Ctrl+D or Delete: Delete the character under the cursor.
+Alt+D: Delete all characters after the cursor on the current line.
+Ctrl+H or Backspace: Delete the character before the cursor.
+
+Alt+T: Swap the current word with the previous word.
+Ctrl+T: Swap the last two characters before the cursor with each other. You can use this to quickly fix typos when you type two characters in the wrong order.
+Ctrl+_: Undo your last key press. You can repeat this to undo multiple times.
+
+Ctrl+R: Recall the last command matching the characters you provide. Press this shortcut and start typing to search your bash history for a command.
+Ctrl+O: Run a command you found with Ctrl+R.
+Ctrl+G: Leave history searching mode without running a command.
+Ctrl + G: Exit history search mode
+
+Ctrl + Shift + C	Copy the selected text or command.
+Ctrl + Shift + V	Paste copied text or command.
+
+Ctrl + Alt + F1 to Ctrl + Alt + F6: Switch to virtual consoles 1 through 6
+Ctrl + Alt + F7: Switch back to the graphical environment
+
+
+Ctrl + Alt + D: Minimize all windows and show the desktop
+Workspaces
+Ctrl + Alt + ←/→ : Move between different virtual workspaces
+Ctrl + Alt + Shift + ↑: Create a new workspace
+Ctrl + Alt + Shft + ↓: Remove the current workspace
+
+Ctrl + Alt + ←/→: Move between workspaces
+Super + W: Workspace overview to move windows
+Super + S: Overview to arrange windows on current workspace
+
+Alt + ?: Display files or folders in the current path.
+Alt + Backspace: Delete the last word.
+Alt + D: Delete the word after the cursor.
+Alt + Delete: Delete the word before the cursor.
+Alt + B: Move the cursor one word backward.
+Alt + F: Move the cursor one word forward.
+
+Super + D: Minimize all open windows instantly to see the desktop.
+Super + L: Lock the screen.
+
+
+https://help.ubuntu.com/stable/ubuntu-help/shell-keyboard-shortcuts.html.en
+
+man xclip -selection specify which X selection to use, options are "primary" to use XA_PRIMARY  (default),  "secondary"  for XA_SECONDARY or "clipboard" for XA_CLIPBOARD
