@@ -1,0 +1,95 @@
+https://curl.se/docs/manpage.html
+-------------------------------
+curl https://curl.se				      #curl --request GET curl.se
+curl --http2 https://curl.se			#http/2
+
+--request (или -X)	              #HEAD, POST, PUT и DELETE
+--head (или -I)
+--location (или -L)	              #follow any redirect until it reaches the final destination
+--insecure (или -k)               #чтобы разрешить незащищённые подключения и избежать ошибок с сертификатом
+--remote-name (или -O)		        #Для скачивания файла и сохранения с тем же именем
+--output (или -o)		              #сохранить файл с новым именем
+--silent (или -s)		              #отключить индикатор прогресса
+--user-agent (или -A)
+
+curl -x 192.168.0.250:8088 -U username:password https://curl.se/	      #proxy
+curl -vkIH "x-client-os: Windows 11 Enterprise (x64)" https://curl.se	  #header
+
+--connect-timeout <seconds>
+
+--connect-to <HOST1:PORT1:HOST2:PORT2>	#For a request intended for the "HOST1:PORT1" pair, connect to "HOST2:PORT2" instead.
+
+--dns-ipv4-addr <address>
+--dns-ipv6-addr <address>
+--dns-servers <addresses>
+-4, --ipv4
+-6, --ipv6
+
+--resolve <[+]host:port:addr[,addr]...> 
+Example:
+ curl --resolve example.com:443:127.0.0.1 https://example.com
+
+-G, --get
+(HTTP) When used, this option makes all data specified with -d, --data, --data-binary or --data-urlencode 
+    to be used in an HTTP GET request instead of the POST request that otherwise would be used.
+    The data is appended to the URL with a '?' separator. 
+
+--happy-eyeballs-timeout-ms <ms> #200ms
+  Happy Eyeballs is an algorithm that attempts to connect to both IPv4 and IPv6 addresses for dual-stack hosts,
+  giving IPv6 a head-start of the specified number of milliseconds. 
+  If the IPv6 address cannot be connected to within that time, 
+  then a connection attempt is made to the IPv4 address in parallel.
+  The first connection to be established is the one that is used. 
+
+-H, --header <header/@file>
+Examples:
+ curl -H "X-First-Name: Joe" https://example.com
+ curl -H "User-Agent: yes-please/2000" https://example.com
+ curl -H "Host:" https://example.com
+ curl -H @headers.txt https://example.com
+
+--json <data>
+(HTTP) Sends the specified JSON data in a POST request to the HTTP server. --json works as a shortcut for passing on these three options:
+	--data [arg]
+	--header "Content-Type: application/json"
+	--header "Accept: application/json"
+
+-L, --location            #redirects
+--location-trusted 
+
+-x, --proxy [protocol://]host[:port] 
+Use the specified proxy.
+  The proxy string can be specified with a protocol:// prefix. No protocol specified or http:// it is treated as an HTTP proxy.
+  Use socks4://, socks4a://, socks5:// or socks5h:// to request a specific SOCKS version to be used.
+  Unix domain sockets are supported for socks proxy. Set localhost for the host part. e.g. socks5h://localhost/path/to/socket.sock 
+
+-v, --verbose
+A line starting with > means header data sent by curl, < means header data received by curl that is hidden in normal cases,
+  and a line starting with * means additional info provided by curl. 
+If you think this option still does not give you enough details, consider using 
+--trace or --trace-ascii instead.
+
+POST (--data, -d)
+Запрос в виде списка имя=значение:
+$ curl --data "param1=test1&param2=test2" http://curl.se
+Запрос в виде JSON:
+curl  -H 'Content-Type: application/json' --data '{"param1":"test1","param2":"test2"}' http://www.curl.se
+
+$ curl -X PUT -H "Content-Type: application/json" -d '{"name":"curl","email":"curl@curl.se"}' http://curl.se/user/
+
+mail
+curl --insecure --ssl-reqd smtps://mail.curl.se –-mail-from sender@curl.se –-mail-rcpt receiver@example.com --user sender@curl.se --upload-file email_msg.txt #mail
+
+
+
+
+
+
+
+
+
+
+
+
+
+
