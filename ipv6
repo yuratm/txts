@@ -22,6 +22,14 @@ Running kernel is IPv6 ready
 it is enabled.
 If you see no output, it is not.
 ==========================
-
-
+https://wiki.archlinux.org/title/IPv6#Disable_functionality
+https://www.golinuxcloud.com/linux-disable-ipv6/
+sudo vim /etc/systemd/network/en-all.network
+/etc/gai.conf
+/etc/init/procps.conf
+https://serverfault.com/questions/270201/sysctl-conf-not-running-on-boot
+/etc/init.d/procps.sh
+crontab -e
+@reboot root /bin/sleep 5 && /sbin/sysctl --system
+https://bugs.launchpad.net/ubuntu/+source/procps/+bug/50093
 ==========================
