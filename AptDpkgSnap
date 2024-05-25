@@ -5,13 +5,16 @@ unattended-upgrades             # /etc/apt/apt.conf.d/50unattended-upgrades
                                 # To enable automatic updates, edit /etc/apt/apt.conf.d/20auto-upgrades
                                 # /var/log/unattended-upgrades
 
-sudo apt install                # Install a Package
-sudo apt remove                 # --purge option to apt remove will remove the package configuration files
-sudo apt update
-sudo apt upgrade
-sudo apt list --installed
-sudo apt list --upgradeable
-sudo apt install ./package_name.deb
+apt install                # Install a Package
+apt remove                 # --purge option to apt remove will remove the package configuration files
+apt update
+apt upgrade
+apt list --installed
+apt list --upgradeable
+apt install ./package_name.deb
+apt upgrade package_name        #upgrade a single package
+apt policy package_name         #installed and available versions
+apt install <package name>=<version>
 
 dpkg -i package_name.deb        # install/upgrade a package
 dpkg -l [search_pattern]        # package database, installed and uninstalled
