@@ -79,15 +79,22 @@ $ curl -X PUT -H "Content-Type: application/json" -d '{"name":"curl","email":"cu
 
 mail
 curl --insecure --ssl-reqd smtps://mail.curl.se –-mail-from sender@curl.se –-mail-rcpt receiver@example.com --user sender@curl.se --upload-file email_msg.txt #mail
+--------------
+--limit-rate <speed>		#curl --limit-rate 10M https://example.com
+--------------
+-w, --write-out <format>
+	certs
+	response_code
+	time_appconnect
+	time_connect
+	time_total
+--------------
+==============================
+~/.curlrc
+--------------
 
-
-
-
-
-
-
-
-
+--------------
+==============================
 
 
 
