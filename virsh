@@ -1,0 +1,19 @@
+virsh help
+virsh list --all
+virsh edit <VMName>
+virsh start <VMName>
+virsh shutdown <VMName>
+virsh destroy <VMName>
+virsh undefine <VMName>
+virsh autostart <VMName>
+virsh autostart --disable <VMName>
+virsh vncdisplay <VMName>
+virsh dumpxml
+virsh create conf_file.xml
+virsh nodeinfo
+virsh dominfo <VMName>
+virsh vcpuinfo <VMName>
+
+/etc/libvirt/qemu
+/etc/libvirt/qemu/autostart/
+
