@@ -1,0 +1,44 @@
+-----------------------------
+https://dev.mysql.com/doc/refman/8.4/en/mysqldump.html
+https://habr.com/ru/articles/105954/
+mysqldump -uroot -p <db_name> > db.sql
+    mysqldump [options] db_name [tbl_name ...]
+    mysqldump [options] --databases db_name ...
+    mysqldump [options] --all-databases
+mysql -uroot -p <db_name> < db.sql
+mysqldump --single-transaction --skip-lock-tables --flush-privileges --all-databases > entire_database_server.sql
+Для таблиц InnoDB надо добавлять --single-transaction, это гарантирует целостность данных бекапа.
+Для таблиц MyISAN это не актуально, ибо они не поддерживают транзакционность.
+/etc/my.cnf
+/var/lib/mysql
+-----------------------------
+~/.my.cnf
+[mysqldump]
+host = 127.0.0.1
+user=backup
+password="backup123"
+=============================
+pg_dump -U username -d dbname > dump.sql
+psql -U username -d dbname < dump.sql
+-----------------------------
+psql -U username -d dbname -h hostname
+\l               #Просмотр списка баз данных
+\c dbname        #connect
+\dt              #Просмотр списка таблиц в текущей базе данных
+\d tablename     #список всех столбцов в таблице tablename
+
+-----------------------------
+
+
+
+
+
+
+-----------------------------
+
+
+
+
+
+-----------------------------
+  
