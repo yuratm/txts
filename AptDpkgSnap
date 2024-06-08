@@ -15,6 +15,7 @@ apt install ./package_name.deb
 apt upgrade package_name        #upgrade a single package
 apt policy package_name         #installed and available versions
 apt install <package name>=<version>
+apt download package_name       #only download
 
 dpkg -i package_name.deb        # install/upgrade a package
 dpkg -l [search_pattern]        # package database, installed and uninstalled
