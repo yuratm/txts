@@ -17,6 +17,10 @@ mysqldump --single-transaction --skip-lock-tables --flush-privileges --all-datab
 host = 127.0.0.1
 user=backup
 password="backup123"
+[client]
+password=password
+port=3306
+socket=/tmp/mysql.sock
 =============================
 pg_dump -U username -d dbname > dump.sql
 psql -U username -d dbname < dump.sql
@@ -26,9 +30,8 @@ psql -U username -d dbname -h hostname
 \c dbname        #connect
 \dt              #Просмотр списка таблиц в текущей базе данных
 \d tablename     #список всех столбцов в таблице tablename
-
 -----------------------------
-
+~/.psqlrc
 
 
 
