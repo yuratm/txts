@@ -1,0 +1,26 @@
+docker events
+docker port
+docker top
+docker stats
+docker diff
+docker cp <host_path_file> <container_name>:<path_file>
+docker-compose up -d
+docker-compose ps
+ENTRYPOINT ["/usr/sbin/nginx"]    #main
+CMD ["-h"]                        #params
+-----------------
+https://docs.docker.com/reference/cli/docker/container/commit/  
+docker commit [options] [container-id-or-name] [image-name]:[tag]
+  - Creates an image from a container and saves it locally.
+    -c, --change		Apply Dockerfile instruction to the created image
+      docker commit --change "ENV DEBUG=true" c3f279d17e0a  svendowideit/testimage:version3
+-----------------
+docker import используется для импортирования tar файла (контейнера),
+    созданного через docker export.
+docker load для загрузки tar файла (образа), созданного через docker save.
+
+
+
+
+
+-----------------
