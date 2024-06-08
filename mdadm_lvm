@@ -1,0 +1,71 @@
+-----------------------------
+fdisk -l          #Partitions
+pvs               #Partition PV <-> VG
+lvs               #LV <-> VG
+vgs
+lvdisplay
+pvdisplay
+vgdisplay
+
+physical volume (pv) -> volume group (vg) -> logical volume (lv)
+PV, physical volume      #disk or raid (blk)
+VG, volume group         #sum of pv
+LV, logical volume       #"partition", fs  #/dev/mapper/vg...
+
+pvscan
+fdisk /dev/sda    #(n -> p - > 1 -> t -> 8e -> w)
+Hex code (type L to list codes): 8e    #8e (Linux LVM)
+pvcreate /dev/sda1      #or without partitions
+pvscan
+vgcreate vg_group /dev/sda1
+#or extend
+vgextend vg_group /dev/sda1
+
+lvscan
+lvcreate -n vg_LogVol -L 2G vg_group
+mkfs.ext4 ...
+#or extend
+lvextend -L +1G /dev/mapper/vg_group_LogVol
+resize2fs /dev/mapper/vg_group_LogVol
+
+-----------------------------
+/proc/mdstat
+
+
+
+
+
+-----------------------------
+
+
+
+
+-----------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
