@@ -23,7 +23,14 @@ port=3306
 socket=/tmp/mysql.sock
 =============================
 pg_dump -U username -d dbname > dump.sql
-psql -U username -d dbname < dump.sql
+pg_dump -t mytab mydb > db.sql                #single table
+psql -U username -d dbname -f dump.sql
+pg_dumpall
+pg_restore
+pg_basebackup -h mydbserver -D /usr/local/pgsql/data
+pg_verifybackup /usr/local/pgsql/data
+https://www.postgresql.org/docs/16/app-pgbasebackup.html
+https://www.postgresql.org/docs/16/app-pgdump.html
 -----------------------------
 psql -U username -d dbname -h hostname
 \l               #Просмотр списка баз данных
