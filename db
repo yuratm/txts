@@ -37,10 +37,13 @@ psql -U username -d dbname -h hostname
 \c dbname        #connect
 \dt              #Просмотр списка таблиц в текущей базе данных
 \d tablename     #список всех столбцов в таблице tablename
+\dn              #List of schemas
+\x               #expanded output
+    -x option of psql
 -----------------------------
 ~/.psqlrc
 
-
+PSQL_PAGER=less
 
 
 
