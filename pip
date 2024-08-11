@@ -1,0 +1,30 @@
+https://pip.pypa.io/en/stable/cli/
+-----------
+Environment Management and Introspection
+
+    pip install
+    pip uninstall
+    pip inspect
+    pip list
+    pip show
+    pip freeze
+    pip check
+-----------
+Handling Distribution Files
+
+    pip download
+    pip wheel
+    pip hash
+-----------
+Package Index information
+
+    pip search
+-----------
+Managing pip itself
+
+    pip cache
+    pip config
+    pip debug
+-----------
+-V, --version
+-----------
