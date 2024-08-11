@@ -29,6 +29,9 @@ lvextend -L +1G /dev/mapper/vg_group_LogVol
 resize2fs /dev/mapper/vg_group_LogVol
 
 -----------------------------
+/etc/mdadm.conf
+
+cat /proc/mdstat
 /proc/mdstat
 
 
