@@ -18,9 +18,18 @@ docker commit [options] [container-id-or-name] [image-name]:[tag]
 docker import используется для импортирования tar файла (контейнера),
     созданного через docker export.
 docker load для загрузки tar файла (образа), созданного через docker save.
-
-
-
-
-
 -----------------
+===================================================
+
+docker login to_hub.example.com
+
+docker image tag from_hub.example.com/path/container_name:latest to_hub.example.com/tools/container_name:latest
+docker image push to_hub.example.com/tools/container_name:latest
+
+cd ~/cosign/
+cosign sign --key cosign.key to_hub.example.com/tools/container_name:latest
+
+===================================================
+
+
+
