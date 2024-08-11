@@ -1,0 +1,39 @@
+==============================
+https://ubuntu.com/server/docs/how-to-use-nginx-modules
+==============================
+Available modules
+nginx -V 2>&1 | tr -- - '\n' | grep _module
+
+apt policy libnginx-mod-http-image-filter
+apt policy ngx_http_image_filter_module
+
+==============================
+Enabling and disabling dynamic modules
+ls /etc/nginx/modules-*
+
+==============================
+## /etc/nginx/modules-enabled/50-mod-http-image-filter.conf
+load_module modules/ngx_http_image_filter_module.so;
+
+==============================
+https://nginx.org/en/docs/http/ngx_http_image_filter_module.html
+
+ngx_http_image_filter_module
+The ngx_http_image_filter_module module (0.7.54+)
+==============================
+This module is not built by default, it should be enabled with the --with-http_image_filter_module configuration parameter. 
+
+This module utilizes the libgd library. It is recommended to use the latest available version of the library. 
+
+
+==============================
+https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.gz
+
+https://github.com/libgd/libgd/blob/master/docs/README.TXT
+
+If the sources have been fetched from git, run bootstrap.sh [options].
+
+From a released source, use:
+1. Type './configure'
+2. Type 'make install'
+==============================
