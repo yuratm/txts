@@ -27,7 +27,7 @@ pm2 save
 pm2 resurrect
 
 ===========================================
-next.config.js  #disable eslint
+next.config.js  #disable eslint BAD(!)
 -------------
 module.exports = {
   reactStrictMode: true,
@@ -36,6 +36,9 @@ module.exports = {
   },
 ...
 -------------
+DISABLE_ESLINT_PLUGIN=true in your .envfile
+ESLINT_NO_DEV_ERRORS=true
+TSC_COMPILE_ON_ERROR=true
 ===========================================
 https://pm2.io/blog/2018/05/31/PM2-Setup-and-Deployment-with-Ecosystem-Configuration
 https://pm2.keymetrics.io/docs/usage/application-declaration/
@@ -59,8 +62,31 @@ module.exports = {
   }
 
 ===========================================
-
-
+    - name: FS | Create /etc/logrotate.d/pm2-logs
+      ansible.builtin.copy:
+        dest: "/etc/logrotate.d/pm2-logs"
+        content: |
+          /home/deployer/.pm2/pm2.log
+          /home/deployer/.pm2/logs/*.log
+          {
+              su deployer deployer
+              rotate 62
+              daily
+              dateext
+              dateformat .%Y-%m-%d_%H-%M-%S
+              missingok
+              notifempty
+              compress
+              delaycompress
+              create 0640 deployer deployer
+              lastaction
+                  sudo -iu deployer pm2 reloadLogs
+              endscript
+          }
+        owner: "root"
+        group: "root"
+        mode: "0644"
+===========================================
 
 
 
