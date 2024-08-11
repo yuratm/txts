@@ -1,0 +1,69 @@
+===========================================
+nvm
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm --version
+#nvm install node
+
+nvm install 11.5
+nvm ls
+nvm use v14.10.0
+
+===========================================
+.nvmrc
+18.13.0
+
+.nvm/versions/node/v16.20.2/bin/node
+
+interpreter: '/bin/bash'
+interpreter: '/path/.nvm/versions/node/v16.20.2/bin/node',
+===========================================
+yarn
+yarn build
+pm2 start ecosystem.config.js
+
+pm2 list
+pm2 save
+pm2 resurrect
+
+===========================================
+next.config.js  #disable eslint
+-------------
+module.exports = {
+  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+...
+-------------
+===========================================
+https://pm2.io/blog/2018/05/31/PM2-Setup-and-Deployment-with-Ecosystem-Configuration
+https://pm2.keymetrics.io/docs/usage/application-declaration/
+
+ecosystem.config.js      #BAD(!) example
+
+module.exports = {
+    apps : [{
+      name: "landing",
+      script: "start-server.js",
+      interpreter: '/home/deployer/.nvm/versions/node/v16.20.2/bin/node',
+      watch: true,
+      ignore_watch : ["node_modules", "logs"],
+      autorestart: true,
+      restart_delay: 10000,
+      log_file: "/home/deployer/.pm2/logs/landing-combined.log",
+      out_file: "/home/deployer/.pm2/logs/landing-out.log",
+      error_file: "/home/deployer/.pm2/logs/landing-err.log",
+      time: true
+    }]
+  }
+
+===========================================
+
+
+
+
+
+
+
+
