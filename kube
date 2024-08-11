@@ -1,0 +1,41 @@
+
+kubectl get nodes
+
+kubectl get namespace
+
+kubectl get pods --namespace=stage
+
+kubectl get pods --all-namespaces -o wide
+
+kubectl -n stage exec --stdin --tty container_name -- /bin/sh
+kubectl -n default exec --stdin --tty pg-tsdb-0 -- /bin/sh
+psql -U postgres
+
+kubectl get deployment --all-namespaces
+
+kubectl get services
+kubectl get pods --all-namespaces
+kubectl get pods -o wide
+kubectl get deployment some_dep
+kubectl get pods
+kubectl get pod some_pod -o yaml
+========================================
+
+helm version
+
+helm repo list
+
+helm status some_name -n stage
+
+helm upgrade some_name ${GITHUB_WORKSPACE}/kubernetes/chart -n stage -f ${GITHUB_WORKSPACE}/kubernetes/values-stage.yaml
+
+helm list
+helm list -n stage
+
+
+=========================================================
+Приложения, которые выкатываются при помощи Helm, должны обслуживаться только с использованием Helm.
+Изменения, сделанные вручную(kubectl), не будут учтены Helm и могут приводить к необратимым последствиям.
+Изменения должны выполняться только через коммит в Git-репозиторий, изменения файлов чарта и конфигурационного файла CI.
+
+=========================================================
