@@ -105,3 +105,64 @@ Super + L: Lock the screen.
 https://help.ubuntu.com/stable/ubuntu-help/shell-keyboard-shortcuts.html.en
 
 man xclip -selection specify which X selection to use, options are "primary" to use XA_PRIMARY  (default),  "secondary"  for XA_SECONDARY or "clipboard" for XA_CLIPBOARD
+
+======================================
+#eval "$(ssh-agent -s)"
+ls /sys/firmware/efi/efivars
+lshw
+lspci
+lshw -class network | grep driver
+lscpu -p
+resolvectl status eth0
+zpool status
+systemctl list-units --type=service
+journalctl -p err
+journalctl -b -k -p err
+journalctl -u
+sysctl -a | grep disable_ipv6
+smartctl -a /dev/nvme0n1
+ansible -vv server_or_group -m debug -a "var=some_var"
+======================================
+= Destroy =
+umount /mnt/{boot/efi,boot,dev,proc,sys/firmware/efi/efivars,sys,run}
+umount /mnt
+wipefs --all /dev/mapper/root
+cryptsetup close root
+wipefs --all /dev/md*
+mdadm -S /dev/md1
+mdadm -S /dev/md2
+wipefs --all /dev/nvme?n1p*
+wipefs --all /dev/nvme?n1*
+
+shred -n1 -z -v -f /dev/nvme0n1
+shred -n1 -z -v -f /dev/nvme1n1
+
+#--# pkg: util-linux
+blkdiscard -s -f -v /dev/nvme0n1
+blkdiscard -s -f -v /dev/nvme1n1
+
+dd if=/dev/zero of=/dev/nvme0n1 bs=1G count=10 status=progress
+dd if=/dev/zero of=/dev/nvme1n1 bs=1G count=10 status=progress
+======================================
+rm -f /var/run/netplan/eth0.yaml
+netplan generate
+netplan apply
+systemctl restart procps.service
+================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
