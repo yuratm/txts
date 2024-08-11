@@ -1,2 +1,10 @@
 https://githubtraining.github.io/training-manual/book.pdf
+-------------
+.gitconfig
+
+[user]
+	name = Name
+	email = name@example.com
+-------------
+
 
