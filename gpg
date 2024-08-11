@@ -1,0 +1,2 @@
+gpg -se -r recipient1@example.com -r recipient2@example.com file_to_gpg_encrypt.txt    #encrypyt
+gpg file_to_gpg_decrypt.txt.gpg                                                        #decrypt
