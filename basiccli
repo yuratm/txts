@@ -149,8 +149,19 @@ netplan generate
 netplan apply
 systemctl restart procps.service
 ================
+bios:
+    /boot/grub2/
+    /etc/default/grub
+    /etc/grub.d/
+    /boot/loader/ (BLS)
+BIOS, POST, BIOS, sector1, grub1, grub2, grub3, menu, kernel, initrafs
 
-
+UEFI:
+    /boot/grub2/
+    /etc/default/grub
+    /etc/grub.d/
+    /boot/efi/EFI/<OS_vendor>/
+    /boot/loader/ (BLS)
 
 
 
