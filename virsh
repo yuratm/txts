@@ -1,19 +1,32 @@
 virsh help
+virsh list
 virsh list --all
 virsh edit <VMName>
 virsh start <VMName>
 virsh shutdown <VMName>
+virsh reboot <VMName>
 virsh destroy <VMName>
 virsh undefine <VMName>
 virsh autostart <VMName>
 virsh autostart --disable <VMName>
 virsh vncdisplay <VMName>
 virsh dumpxml
+virsh dumpxml <VMName> > conf_file.xml
 virsh create conf_file.xml
 virsh nodeinfo
 virsh dominfo <VMName>
+virsh domstate <VMName>
 virsh vcpuinfo <VMName>
+virsh console <VMName>
+virsh migrate --live guest1 qemu+ssh://host2.example.com/system
+virsh migrate --offline --persistent 
 
 /etc/libvirt/qemu
 /etc/libvirt/qemu/autostart/
+
+
+
+
+
+
 
