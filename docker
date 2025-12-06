@@ -31,5 +31,6 @@ cosign sign --key cosign.key to_hub.example.com/tools/container_name:latest
 
 ===================================================
 docker image save some_name | ssh production_server 'docker image load'
+www.docker.com/blog/how-to-deploy-on-remote-docker-hosts-with-docker-compose
 
 
